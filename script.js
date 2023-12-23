@@ -14,13 +14,11 @@ let form2Data = {
   address: "",
   number: "",
   city: "",
-  telephone: "",
+  telephone: 0,
   email: "",
   taxCode: "",
   iban: "",
-  mobile1: "",
-  mobile2: "",
-  mobile3: "",
+  mobile1: 0,
   companyName: "",
   invoiceCode: "",
   vatNumber: "",
@@ -31,7 +29,7 @@ let form3Data = {
   form3_address: "",
   form3_number: "",
   form3_city: "",
-  mobile: "",
+  mobile: 0,
   migrationCode: "",
 };
 let form4Data = {
@@ -50,6 +48,7 @@ function isValidEmail(email) {
 
 // Function to validate an Italian phone number
 function isValidItalyPhoneNumber(phoneNumber) {
+  phoneNumber = "+" + phoneNumber;
   // Italian phone numbers can have various formats, for simplicity, let's check if it starts with +39 (Italy country code) and is followed by 10 digits.
   const phoneRegex = /^\+39\d{10}$/;
   return phoneRegex.test(phoneNumber);
@@ -84,7 +83,7 @@ function loadForm1() {
         </select>
       </div>
       <div class="form-group">
-        <button onclick="submitForm1()">Submit</button>
+        <button onclick="submitForm1()">Next</button>
       </div>
     `;
 
@@ -118,7 +117,7 @@ function loadForm2() {
     </div>
     <div class="form-group">
       <label for="number">Number</label>
-      <input type="text" id="number" name="number" required>
+      <input type="number" id="number" name="number" required>
     </div>
     <div class="form-group">
       <label for="city">City</label>
@@ -126,7 +125,7 @@ function loadForm2() {
     </div>
     <div class="form-group">
       <label for="telephone">Telephone</label>
-      <input type="text" id="telephone" name="telephone" required>
+      <input type="number" id="telephone" name="telephone" required>
     </div>
     <div class="form-group">
       <label for="email">E-mail</label>
@@ -142,18 +141,10 @@ function loadForm2() {
     </div>
     <div class="form-group">
       <label for="mobile1">Mobile/Contact Number 1</label>
-      <input type="text" id="mobile1" name="mobile1" required>
+      <input type="number" id="mobile1" name="mobile1" required>
     </div>
     <div class="form-group">
-      <label for="mobile2">Mobile/Contact Number 2</label>
-      <input type="text" id="mobile2" name="mobile2">
-    </div>
-    <div class="form-group">
-      <label for="mobile3">Mobile/Contact Number 3</label>
-      <input type="text" id="mobile3" name="mobile3">
-    </div>
-    <div class="form-group">
-      <button onclick="submitForm2()">Submit</button>
+      <button onclick="submitForm2()">Next</button>
     </div>
   `;
 
@@ -183,7 +174,7 @@ function loadForm2() {
     </div>
     <div class="form-group">
       <label for="telephone">Telephone</label>
-      <input type="text" id="telephone" name="telephone" required>
+      <input type="number" id="telephone" name="telephone" required>
     </div>
     <div class="form-group">
       <label for="email">E-mail</label>
@@ -207,18 +198,10 @@ function loadForm2() {
     </div>
     <div class="form-group">
       <label for="mobile1">Mobile/Contact Number 1</label>
-      <input type="text" id="mobile1" name="mobile1" required>
+      <input type="number" id="mobile1" name="mobile1" required>
     </div>
     <div class="form-group">
-      <label for="mobile2">Mobile/Contact Number 2</label>
-      <input type="text" id="mobile2" name="mobile2">
-    </div>
-    <div class="form-group">
-      <label for="mobile3">Mobile/Contact Number 3</label>
-      <input type="text" id="mobile3" name="mobile3">
-    </div>
-    <div class="form-group">
-      <button onclick="submitForm2()">Submit</button>
+      <button onclick="submitForm2()">Next</button>
     </div>
   `;
 
@@ -301,7 +284,7 @@ function submitForm2() {
   const isVatNumberValid =
     userType === "company" ? checkVATNumber(form2Data.vatNumber) : true;
   const isValidEmailAddress = isValidEmail(form2Data.email);
-  const isValidNumber = isValidItalyPhoneNumber(form2Data.mobile1);
+  const isValidNumber = isValidItalyPhoneNumber(form2Data.mobile1.toString());
 
   if (
     isIBANValid &&
@@ -346,6 +329,9 @@ function loadForm3() {
   const formContainer = document.getElementById("form-container");
 
   const form3HTML = `
+    <div class="form-group">
+      <p class="center">Please select an option</p>
+    </div>  
     <div class="form-group-radios">
       <label class="container">Activation
         <input class="remove-input-margin" type="radio" checked="checked" name="option" value="activation" onclick="toggleFormFields('activation')">
@@ -357,35 +343,35 @@ function loadForm3() {
       </label>
     </div>
     <div class="form-group">
-      <label for="form3_name">Name</label>
+      <label for="form3_name">Name2</label>
       <input type="text" id="form3_name" name="form3_name" required>
     </div>
     <div class="form-group">
-      <label for="form3_surname">Surname</label>
+      <label for="form3_surname">Surname2</label>
       <input type="text" id="form3_surname" name="form3_surname" required>
     </div>
     <div class="form-group">
-      <label for="form3_address">Address</label>
+      <label for="form3_address">Address2</label>
       <input type="text" id="form3_address" name="form3_address" required>
     </div>
     <div class="form-group">
-      <label for="form3_number">Number</label>
+      <label for="form3_number">Number2</label>
       <input type="text" id="form3_number" name="form3_number" required>
     </div>
     <div class="form-group">
-      <label for="form3_city">City</label>
+      <label for="form3_city">City2</label>
       <input type="text" id="form3_city" name="form3_city" required>
     </div>
     <div class="form-group">
-      <label for="mobile">Mobile</label>
-      <input type="text" id="mobile" name="mobile" required>
+      <label for="mobile">Mobile2</label>
+      <input type="number" id="mobile" name="mobile" required>
     </div>
     <div class="form-group" id="migrationFields">
       <label for="migrationCode">Migration Code</label>
       <input type="text" id="migrationCode" name="migrationCode" disabled>
     </div>
     <div class="form-group">
-      <button onclick="submitForm3()">Submit</button>
+      <button onclick="submitForm3()">Next</button>
     </div>
   `;
 
@@ -487,7 +473,7 @@ function loadForm4() {
     </div>
 
     <div class="form-group">
-      <button onclick="submitForm4()">Submit</button>
+      <button onclick="submitForm4()">Next</button>
     </div>
   `;
 
@@ -560,7 +546,7 @@ function loadForm5() {
           : ""
       }
       <p>IBAN: ${form2Data.iban}</p>
-      <p>Mobile/Contact Number 1: ${form2Data.mobile1}</p>
+      <p>Mobile/Contact Number 1: +${form2Data.mobile1}</p>
     </div>
 
     <hr class="divider" />
@@ -572,7 +558,7 @@ function loadForm5() {
       <p>Address: ${form3Data.form3_address}</p>
       <p>Number: ${form3Data.form3_number}</p>
       <p>City: ${form3Data.form3_city}</p>
-      <p>Mobile: ${form3Data.mobile}</p>
+      <p>Mobile: +${form3Data.mobile}</p>
       ${
         form3Data.migrationCode === ""
           ? ""
@@ -631,7 +617,11 @@ function modifyEntries() {
       label.textContent = `${field.charAt(0).toUpperCase() + field.slice(1)}:`;
 
       const input = document.createElement("input");
-      input.type = "text";
+      if (["mobile1", "mobile2", "mobile3", "telephone"].includes(field)) {
+        input.type = "number";
+      } else {
+        input.type = "text";
+      }
       input.id = field;
       input.name = field;
       input.value = form2Data[field];
@@ -653,7 +643,11 @@ function modifyEntries() {
     label.textContent = `${field.charAt(0).toUpperCase() + field.slice(1)}:`;
 
     const input = document.createElement("input");
-    input.type = "text";
+    if (["mobile"].includes(field)) {
+      input.type = "number";
+    } else {
+      input.type = "text";
+    }
     input.id = field;
     input.name = field;
     input.value = form3Data[field];
