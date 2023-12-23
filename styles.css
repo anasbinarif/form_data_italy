@@ -17,11 +17,12 @@ body {
   margin: 50px auto;
   padding: 20px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 18px;
   max-height: 700px;
   overflow: auto;
   background-color: whitesmoke;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow-x: hidden;
 }
 .form-container::-webkit-scrollbar {
   width: 8px; /* Set the width of the scrollbar */
@@ -39,6 +40,10 @@ body {
 .form-group {
   margin-bottom: 15px;
   position: relative;
+}
+.form2-heading {
+  display: flex;
+  justify-content: center;
 }
 
 label {
@@ -144,4 +149,11 @@ button:hover {
 .form-group-radios {
   display: flex;
   justify-content: space-around;
+}
+
+.divider {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #ccc;
 }
