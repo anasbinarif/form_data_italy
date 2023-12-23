@@ -5,7 +5,7 @@
 
 /* Add your styling here */
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Roboto", var(--header__font-family, inherit);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -28,17 +28,17 @@ body {
   overflow-x: hidden;
 }
 .form-container::-webkit-scrollbar {
-  width: 8px; /* Set the width of the scrollbar */
+  display: none; /* Set the width of the scrollbar */
 }
 
-.form-container::-webkit-scrollbar-thumb {
-  background-color: grey; /* Set the color of the scrollbar thumb */
-  border-radius: 10px; /* Set the border radius of the scrollbar thumb */
+/* .form-container::-webkit-scrollbar-thumb {
+  background-color: grey;
+  border-radius: 10px; 
 }
 
 .form-container::-webkit-scrollbar-track {
-  background-color: #f1f1f1; /* Set the color of the scrollbar track */
-}
+  background-color: #f1f1f1; 
+} */
 
 .form-group {
   margin-bottom: 15px;
@@ -59,6 +59,9 @@ input {
   padding: 8px;
   box-sizing: border-box;
   margin-bottom: 10px;
+}
+::placeholder {
+  color: red;
 }
 .container {
   display: flex;
@@ -94,7 +97,7 @@ select:focus {
   border-color: #161515; /* Set your desired border color on focus */
 }
 
-button {
+/* button {
   padding: 10px 20px;
   background-color: #4caf50;
   color: #fff;
@@ -105,6 +108,50 @@ button {
 
 button:hover {
   background-color: #45a049;
+} */
+
+.form-group-btn {
+  display: flex;
+  gap: 15px;
+}
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #a881af;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 20px;
+  padding: 10px 20px;
+  width: 100px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
 }
 
 /* Create a custom radio button */
@@ -159,4 +206,72 @@ button:hover {
   margin-bottom: 20px;
   border: 0;
   border-top: 1px solid #ccc;
+}
+
+/* CSS */
+.button-86 {
+  all: unset;
+  width: 100px;
+  height: 30px;
+  font-size: 16px;
+  background: transparent;
+  border: none;
+  position: relative;
+  color: #f0f0f0;
+  cursor: pointer;
+  z-index: 1;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-86::after,
+.button-86::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -99999;
+  transition: all 0.4s;
+}
+
+.button-86::before {
+  transform: translate(0%, 0%);
+  width: 100%;
+  height: 100%;
+  background: #28282d;
+  border-radius: 10px;
+}
+
+.button-86::after {
+  transform: translate(10px, 10px);
+  width: 35px;
+  height: 35px;
+  background: #ffffff15;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 50px;
+}
+
+.button-86:hover::before {
+  transform: translate(5%, 20%);
+  width: 110%;
+  height: 110%;
+}
+
+.button-86:hover::after {
+  border-radius: 10px;
+  transform: translate(0, 0);
+  width: 100%;
+  height: 100%;
+}
+
+.button-86:active::after {
+  transition: 0s;
+  transform: translate(0, 5%);
 }

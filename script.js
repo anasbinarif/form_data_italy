@@ -83,7 +83,7 @@ function loadForm1() {
         </select>
       </div>
       <div class="form-group">
-        <button onclick="submitForm1()">Next</button>
+        <button onclick="submitForm1()" class="button" style="vertical-align:middle"><span>Next </span></button>
       </div>
     `;
 
@@ -116,8 +116,8 @@ function loadForm2() {
       <input type="text" id="address" name="address" required>
     </div>
     <div class="form-group">
-      <label for="number">Number</label>
-      <input type="number" id="number" name="number" required>
+      <label for="number">House Number</label>
+      <input type="text" id="number" name="number" required>
     </div>
     <div class="form-group">
       <label for="city">City</label>
@@ -144,7 +144,7 @@ function loadForm2() {
       <input type="number" id="mobile1" name="mobile1" required>
     </div>
     <div class="form-group">
-      <button onclick="submitForm2()">Next</button>
+      <button onclick="submitForm2()" class="button" style="vertical-align:middle"><span>Next </span></button>
     </div>
   `;
 
@@ -165,7 +165,7 @@ function loadForm2() {
       <input type="text" id="address" name="address" required>
     </div>
     <div class="form-group">
-      <label for="number">Number</label>
+      <label for="number">House Number</label>
       <input type="text" id="number" name="number" required>
     </div>
     <div class="form-group">
@@ -201,7 +201,7 @@ function loadForm2() {
       <input type="number" id="mobile1" name="mobile1" required>
     </div>
     <div class="form-group">
-      <button onclick="submitForm2()">Next</button>
+      <button onclick="submitForm2()" class="button" style="vertical-align:middle"><span>Next </span></button>
     </div>
   `;
 
@@ -355,7 +355,7 @@ function loadForm3() {
       <input type="text" id="form3_address" name="form3_address" required>
     </div>
     <div class="form-group">
-      <label for="form3_number">Number2</label>
+      <label for="form3_number">House Number2</label>
       <input type="text" id="form3_number" name="form3_number" required>
     </div>
     <div class="form-group">
@@ -371,7 +371,7 @@ function loadForm3() {
       <input type="text" id="migrationCode" name="migrationCode" disabled>
     </div>
     <div class="form-group">
-      <button onclick="submitForm3()">Next</button>
+      <button onclick="submitForm3()" class="button" style="vertical-align:middle"><span>Next </span></button>
     </div>
   `;
 
@@ -438,7 +438,7 @@ function loadForm4() {
 
       <div class="form4-items">
         <label for="useMine" class="container">I use mine (free)
-          <input class="remove-input-margin" type="radio" id="useMine" name="modem" value="useMine" onclick="updateCost()">
+          <input class="remove-input-margin" type="radio" id="useMine" name="modem" value="useMine" onclick="updateCost()" checked="checked">
           <span class="checkmark"></span>
         </label>
 
@@ -473,7 +473,7 @@ function loadForm4() {
     </div>
 
     <div class="form-group">
-      <button onclick="submitForm4()">Next</button>
+      <button onclick="submitForm4()" class="button" style="vertical-align:middle"><span>Next </span></button>
     </div>
   `;
 
@@ -575,9 +575,9 @@ function loadForm5() {
       <p>4G Backup: ${form4Data.backup ? "Yes (€200)" : "No"}</p>
     </div>
     <hr class="divider" />
-    <div class="form-group">
-      <button onclick="modifyEntries()">Modify Entries</button>
-      <button onclick="submitForm5()">Submit</button>
+    <div class="form-group-btn">
+      <button onclick="modifyEntries()" class="button-86">Modify Entries</button>
+      <button onclick="submitForm5()" class="button-86">Submit</button>
     </div>
   `;
 
