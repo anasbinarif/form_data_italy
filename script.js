@@ -77,10 +77,13 @@ function loadForm1() {
   const form1HTML = `
       <div class="form-group">
         <label for="userType">Are you a private individual or a company?</label>
-        <select id="userType" name="userType" required>
-          <option value="private">Private Individual</option>
-          <option value="company">Company</option>
-        </select>
+        <div class="select">
+          <select id="userType" name="userType" required>
+            <option value="private">Private Individual</option>
+            <option value="company">Company</option>
+          </select>
+          <div class="select__arrow"></div>
+        </div>
       </div>
       <div class="form-group">
         <button onclick="submitForm1()" class="button" style="vertical-align:middle"><span>Next </span></button>
@@ -333,14 +336,18 @@ function loadForm3() {
       <p class="center">Please select an option</p>
     </div>  
     <div class="form-group-radios">
-      <label class="container">Activation
-        <input class="remove-input-margin" type="radio" checked="checked" name="option" value="activation" onclick="toggleFormFields('activation')">
-        <span class="checkmark"></span>
-      </label>
-      <label class="container">Line Migration
-        <input class="remove-input-margin" type="radio" name="option" value="migration" onclick="toggleFormFields('migration')">
-        <span class="checkmark"></span>
-      </label>
+      <div class="checkbox-wrapper-24">
+        <input type="radio" id="radio-activation" checked="checked" name="option" value="activation" onclick="toggleFormFields('activation')" />
+        <label for="radio-activation" class="radio">
+          <span><!-- This span is needed to create the "checkbox" element --></span>Activation
+        </label>
+      </div>
+      <div class="checkbox-wrapper-24">
+        <input type="radio" id="radio-migration" type="radio" name="option" value="migration" onclick="toggleFormFields('migration')" />
+        <label for="radio-migration" class="radio">
+          <span><!-- This span is needed to create the "checkbox" element --></span>Line Migration
+        </label>
+      </div>
     </div>
     <div class="form-group">
       <label for="form3_name">Name2</label>
@@ -379,16 +386,17 @@ function loadForm3() {
 }
 
 function toggleFormFields(option) {
+  console.log("option", option);
   const migrationFields = document.getElementById("migrationFields");
   const migrationCodeInput = document.getElementById("migrationCode");
   form3mode = option;
 
   if (option === "migration") {
-    migrationFields.style.opacity = 0.5;
-    migrationCodeInput.disabled = true;
-  } else {
     migrationFields.style.opacity = 1;
     migrationCodeInput.disabled = false;
+  } else {
+    migrationFields.style.opacity = 0.5;
+    migrationCodeInput.disabled = true;
   }
 }
 
@@ -437,38 +445,44 @@ function loadForm4() {
       <h3 for="modem">Modem:</h3>
 
       <div class="form4-items">
-        <label for="useMine" class="container">I use mine (free)
-          <input class="remove-input-margin" type="radio" id="useMine" name="modem" value="useMine" onclick="updateCost()" checked="checked">
-          <span class="checkmark"></span>
-        </label>
-
-        <label for="rental" class="container">Rental (€1 per month)
-          <input class="remove-input-margin" type="radio" id="rental" name="modem" value="rental" onclick="updateCost()">
-          <span class="checkmark"></span>
-        </label>
-        
-        <label for="purchase" class="container">Purchase (€50 once)
-          <input class="remove-input-margin" type="radio" id="purchase" name="modem" value="purchase" onclick="updateCost()"> 
-          <span class="checkmark"></span>
-        </label>
+        <div class="checkbox-wrapper-27">
+          <label class="radio">
+            <input type="radio" id="useMine" name="modem" value="useMine" onclick="updateCost()">
+            <span class="checkbox__icon"></span>
+            I use mine (free)
+          </label>
+        </div>
+        <div class="checkbox-wrapper-27">
+          <label class="radio">
+            <input type="radio" id="rental" name="modem" value="rental" onclick="updateCost()">
+            <span class="checkbox__icon"></span>
+            Rental (€1 per month)
+          </label>
+        </div>
+        <div class="checkbox-wrapper-27">
+          <label class="radio">
+            <input type="radio" id="purchase" name="modem" value="purchase" onclick="updateCost()">
+            <span class="checkbox__icon"></span>
+            Purchase (€50 once)
+          </label>
+        </div>
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="checkbox-wrapper-27">
       <h3 for="ip">IP:</h3>
- 
-      <label for="ip" class="container">Yes/No (for yes - €6)
-        <input class="remove-input-margin" type="checkbox" id="ip" name="ip" value="ip" onclick="updateCost()">
-        <span class="checkmark"></span>
+      <label class="checkbox">
+        <input type="checkbox" id="ip" name="ip" value="ip" onclick="updateCost()">
+        <span class="checkbox__icon"></span>
+        Yes/No (for yes - €6)
       </label>
     </div>
-
-    <div class="form-group">
+    <div class="checkbox-wrapper-27">
       <h3 for="backup">4G Backup:</h3>
-
-      <label for="backup" class="container">Yes/No (for yes - €200)
-        <input class="remove-input-margin" type="checkbox" id="backup" name="backup" value="backup" onclick="updateCost()"> 
-        <span class="checkmark"></span>
+      <label class="checkbox">
+        <input type="checkbox" id="backup" name="backup" value="backup" onclick="updateCost()">
+        <span class="checkbox__icon"></span>
+        Yes/No (for yes - €200)
       </label>
     </div>
 
