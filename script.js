@@ -1,4 +1,3 @@
-// Add your JavaScript here
 document.addEventListener("DOMContentLoaded", function () {
   loadForm(1);
 });
@@ -14,11 +13,11 @@ let form2Data = {
   address: "",
   number: "",
   city: "",
-  telephone: 0,
+  telephone: "",
   email: "",
   taxCode: "",
   iban: "",
-  mobile1: 0,
+  mobile1: "",
   companyName: "",
   invoiceCode: "",
   vatNumber: "",
@@ -29,7 +28,7 @@ let form3Data = {
   form3_address: "",
   form3_number: "",
   form3_city: "",
-  mobile: 0,
+  mobile: "",
   migrationCode: "",
 };
 let form4Data = {
@@ -65,7 +64,6 @@ function loadForm(formNumber) {
     case 2:
       loadForm2();
       break;
-    // Add cases for other forms as needed
     default:
       break;
   }
@@ -73,14 +71,19 @@ function loadForm(formNumber) {
 
 function loadForm1() {
   const formContainer = document.getElementById("form-container");
+  const storedUserType = userType || "private";
 
   const form1HTML = `
       <div class="form-group">
         <label for="userType">Are you a private individual or a company?</label>
         <div class="select">
           <select id="userType" name="userType" required>
-            <option value="private">Private Individual</option>
-            <option value="company">Company</option>
+            <option value="private" ${
+              storedUserType === "private" ? "selected" : ""
+            }>Private Individual</option>
+            <option value="company" ${
+              storedUserType === "company" ? "selected" : ""
+            }>Company</option>
           </select>
           <div class="select__arrow"></div>
         </div>
@@ -108,43 +111,43 @@ function loadForm2() {
     </div>
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" id="name" name="name" required>
+      <input type="text" id="name" name="name" value="${form2Data.name}" required>
     </div>
     <div class="form-group">
       <label for="surname">Surname</label>
-      <input type="text" id="surname" name="surname" required>
+      <input type="text" id="surname" name="surname" value="${form2Data.surname}" required>
     </div>
     <div class="form-group">
       <label for="address">Address</label>
-      <input type="text" id="address" name="address" required>
+      <input type="text" id="address" name="address" value="${form2Data.address}" required>
     </div>
     <div class="form-group">
       <label for="number">House Number</label>
-      <input type="text" id="number" name="number" required>
+      <input type="text" id="number" name="number" value="${form2Data.number}" required>
     </div>
     <div class="form-group">
       <label for="city">City</label>
-      <input type="text" id="city" name="city" required>
+      <input type="text" id="city" name="city" value="${form2Data.city}" required>
     </div>
     <div class="form-group">
       <label for="telephone">Telephone</label>
-      <input type="number" id="telephone" name="telephone" required>
+      <input type="number" id="telephone" name="telephone" value="${form2Data.telephone}" required>
     </div>
     <div class="form-group">
       <label for="email">E-mail</label>
-      <input type="email" id="email" name="email" required>
+      <input type="email" id="email" name="email" value="${form2Data.email}" required>
     </div>
     <div class="form-group">
-      <label for="taxCode">Tax Code (Italian)</label>
-      <input type="text" id="taxCode" name="taxCode" pattern="[A-Z0-9]{16}" title="Enter a valid Italian tax code" required>
+      <label for="taxCode">Tax Code</label>
+      <input type="text" id="taxCode" name="taxCode" pattern="[A-Z0-9]{16}" placeholder="Enter a valid Italian tax code" value="${form2Data.taxCode}" required>
     </div>
     <div class="form-group">
-      <label for="iban">IBAN (Italian)</label>
-      <input type="text" id="iban" name="iban" pattern="[A-Z0-9]{27}" title="Enter a valid Italian IBAN" required>
+      <label for="iban">IBAN</label>
+      <input type="text" id="iban" name="iban" pattern="[A-Z0-9]{27}" placeholder="Enter a valid Italian IBAN" value="${form2Data.iban}" required>
     </div>
     <div class="form-group">
-      <label for="mobile1">Mobile/Contact Number 1</label>
-      <input type="number" id="mobile1" name="mobile1" required>
+      <label for="mobile1">Mobile</label>
+      <input type="number" id="mobile1" name="mobile1" value="${form2Data.mobile1}" required>
     </div>
     <div class="form-group">
       <button onclick="submitForm2()" class="button" style="vertical-align:middle"><span>Next </span></button>
@@ -157,51 +160,51 @@ function loadForm2() {
     </div>
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" id="name" name="name" required>
+      <input type="text" id="name" name="name" value="${form2Data.name}" required>
     </div>
     <div class="form-group">
       <label for="surname">Surname</label>
-      <input type="text" id="surname" name="surname" required>
+      <input type="text" id="surname" name="surname" value="${form2Data.surname}" required>
     </div>
     <div class="form-group">
       <label for="address">Address</label>
-      <input type="text" id="address" name="address" required>
+      <input type="text" id="address" name="address" value="${form2Data.address}" required>
     </div>
     <div class="form-group">
       <label for="number">House Number</label>
-      <input type="text" id="number" name="number" required>
+      <input type="text" id="number" name="number" value="${form2Data.number}" required>
     </div>
     <div class="form-group">
       <label for="city">City</label>
-      <input type="text" id="city" name="city" required>
+      <input type="text" id="city" name="city" value="${form2Data.city}" required>
     </div>
     <div class="form-group">
       <label for="telephone">Telephone</label>
-      <input type="number" id="telephone" name="telephone" required>
+      <input type="number" id="telephone" name="telephone" value="${form2Data.telephone}" required>
     </div>
     <div class="form-group">
       <label for="email">E-mail</label>
-      <input type="email" id="email" name="email" required>
+      <input type="email" id="email" name="email" value="${form2Data.email}" required>
     </div>
     <div class="form-group">
       <label for="companyName">Company Name</label>
-      <input type="text" id="companyName" name="companyName" required>
+      <input type="text" id="companyName" name="companyName" value="${form2Data.companyName}" required>
     </div>
     <div class="form-group">
       <label for="invoiceCode">Invoice Code</label>
-      <input type="text" id="invoiceCode" name="invoiceCode" required>
+      <input type="text" id="invoiceCode" name="invoiceCode" value="${form2Data.invoiceCode}" required>
     </div>
     <div class="form-group">
-      <label for="vatNumber">VAT Number (Italian)</label>
-      <input type="text" id="vatNumber" name="vatNumber" pattern="[A-Z0-9]{11}" title="Enter a valid Italian VAT number" required>
+      <label for="vatNumber">VAT Number</label>
+      <input type="text" id="vatNumber" name="vatNumber" value="IT${form2Data.vatNumber}" pattern="[A-Z0-9]{11}" placeholder="Enter a valid Italian VAT number" required>
     </div>
     <div class="form-group">
-      <label for="iban">IBAN (Italian)</label>
-      <input type="text" id="iban" name="iban" pattern="[A-Z0-9]{27}" title="Enter a valid Italian IBAN" required>
+      <label for="iban">IBAN</label>
+      <input type="text" id="iban" name="iban" value="${form2Data.iban}" pattern="[A-Z0-9]{27}" placeholder="Enter a valid Italian IBAN" required>
     </div>
     <div class="form-group">
-      <label for="mobile1">Mobile/Contact Number 1</label>
-      <input type="number" id="mobile1" name="mobile1" required>
+      <label for="mobile1">Mobile Number</label>
+      <input type="number" id="mobile1" name="mobile1" value="${form2Data.mobile1}" required>
     </div>
     <div class="form-group">
       <button onclick="submitForm2()" class="button" style="vertical-align:middle"><span>Next </span></button>
@@ -332,18 +335,25 @@ function loadForm3() {
   const formContainer = document.getElementById("form-container");
 
   const form3HTML = `
+    <div class="form2-heading">
+      <h3>SERVICE INSTALLATION DETAILS<h3/>
+    </div>
     <div class="form-group">
       <p class="center">Please select an option</p>
     </div>  
     <div class="form-group-radios">
       <div class="checkbox-wrapper-24">
-        <input type="radio" id="radio-activation" checked="checked" name="option" value="activation" onclick="toggleFormFields('activation')" />
+        <input type="radio" id="radio-activation" ${
+          form3mode === "activation" ? "checked" : ""
+        } name="option" value="activation" onclick="toggleFormFields('activation')" />
         <label for="radio-activation" class="radio">
           <span><!-- This span is needed to create the "checkbox" element --></span>Activation
         </label>
       </div>
       <div class="checkbox-wrapper-24">
-        <input type="radio" id="radio-migration" type="radio" name="option" value="migration" onclick="toggleFormFields('migration')" />
+        <input type="radio" id="radio-migration" ${
+          form3mode === "migration" ? "checked" : ""
+        } name="option" value="migration" onclick="toggleFormFields('migration')" />
         <label for="radio-migration" class="radio">
           <span><!-- This span is needed to create the "checkbox" element --></span>Line Migration
         </label>
@@ -351,31 +361,45 @@ function loadForm3() {
     </div>
     <div class="form-group">
       <label for="form3_name">Name2</label>
-      <input type="text" id="form3_name" name="form3_name" required>
+      <input type="text" id="form3_name" name="form3_name" value="${
+        form3Data.form3_name
+      }" required>
     </div>
     <div class="form-group">
       <label for="form3_surname">Surname2</label>
-      <input type="text" id="form3_surname" name="form3_surname" required>
+      <input type="text" id="form3_surname" name="form3_surname" value="${
+        form3Data.form3_surname
+      }" required>
     </div>
     <div class="form-group">
       <label for="form3_address">Address2</label>
-      <input type="text" id="form3_address" name="form3_address" required>
+      <input type="text" id="form3_address" name="form3_address" value="${
+        form3Data.form3_address
+      }" required>
     </div>
     <div class="form-group">
       <label for="form3_number">House Number2</label>
-      <input type="text" id="form3_number" name="form3_number" required>
+      <input type="text" id="form3_number" name="form3_number" value="${
+        form3Data.form3_number
+      }" required>
     </div>
     <div class="form-group">
       <label for="form3_city">City2</label>
-      <input type="text" id="form3_city" name="form3_city" required>
+      <input type="text" id="form3_city" name="form3_city" value="${
+        form3Data.form3_city
+      }" required>
     </div>
     <div class="form-group">
       <label for="mobile">Mobile2</label>
-      <input type="number" id="mobile" name="mobile" required>
+      <input type="number" id="mobile" name="mobile" value="${
+        form3Data.mobile
+      }" required>
     </div>
     <div class="form-group" id="migrationFields">
       <label for="migrationCode">Migration Code</label>
-      <input type="text" id="migrationCode" name="migrationCode" disabled>
+      <input type="text" id="migrationCode" name="migrationCode" value="${
+        form3Data.migrationCode
+      }" disabled>
     </div>
     <div class="form-group">
       <button onclick="submitForm3()" class="button" style="vertical-align:middle"><span>Next </span></button>
@@ -441,27 +465,36 @@ function loadForm4() {
   const formContainer = document.getElementById("form-container");
 
   const form4HTML = `
+    <div class="form2-heading">
+      <h3>ADDITIONAL SERVICES<h3/>
+    </div>
     <div class="form-group">
       <h3 for="modem">Modem:</h3>
-
+      <p for="modem">Please select an option</p>
       <div class="form4-items">
         <div class="checkbox-wrapper-27">
           <label class="radio">
-            <input type="radio" id="useMine" name="modem" value="useMine" onclick="updateCost()">
+            <input type="radio" id="useMine" name="modem" value="useMine" onclick="updateCost()" ${
+              form4Data.modem.useMine ? "checked" : ""
+            }>
             <span class="checkbox__icon"></span>
             I use mine (free)
           </label>
         </div>
         <div class="checkbox-wrapper-27">
           <label class="radio">
-            <input type="radio" id="rental" name="modem" value="rental" onclick="updateCost()">
+            <input type="radio" id="rental" name="modem" value="rental" onclick="updateCost()" ${
+              form4Data.modem.rental ? "checked" : ""
+            }>
             <span class="checkbox__icon"></span>
             Rental (€1 per month)
           </label>
         </div>
         <div class="checkbox-wrapper-27">
           <label class="radio">
-            <input type="radio" id="purchase" name="modem" value="purchase" onclick="updateCost()">
+            <input type="radio" id="purchase" name="modem" value="purchase" onclick="updateCost()" ${
+              form4Data.modem.purchase ? "checked" : ""
+            }>
             <span class="checkbox__icon"></span>
             Purchase (€50 once)
           </label>
@@ -472,17 +505,21 @@ function loadForm4() {
     <div class="checkbox-wrapper-27">
       <h3 for="ip">IP:</h3>
       <label class="checkbox">
-        <input type="checkbox" id="ip" name="ip" value="ip" onclick="updateCost()">
+        <input type="checkbox" id="ip" name="ip" value="ip" onclick="updateCost()" ${
+          form4Data.ip ? "checked" : ""
+        }>
         <span class="checkbox__icon"></span>
-        Yes/No (for yes - €6)
+        €6
       </label>
     </div>
     <div class="checkbox-wrapper-27">
       <h3 for="backup">4G Backup:</h3>
       <label class="checkbox">
-        <input type="checkbox" id="backup" name="backup" value="backup" onclick="updateCost()">
+        <input type="checkbox" id="backup" name="backup" value="backup" onclick="updateCost()" ${
+          form4Data.backup ? "checked" : ""
+        }>
         <span class="checkbox__icon"></span>
-        Yes/No (for yes - €200)
+        €200
       </label>
     </div>
 
@@ -531,67 +568,72 @@ function loadForm5() {
   const formContainer = document.getElementById("form-container");
 
   const form5HTML = `
+    <div class="form2-heading">
+      <h3>SUMMARY<h3/>
+    </div>
     <div class="form-group">
-      <h2>Summary of Your Entries</h2>
+      <p class="summaryTag">(Please verify your details before submitting)</p>
 
-      <h3>Form 2 Data</h3>
-      <p>User Type: ${userType}</p>
-      <p>Name: ${form2Data.name}</p>
-      <p>Surname: ${form2Data.surname}</p>
-      <p>Address: ${form2Data.address}</p>
-      <p>Number: ${form2Data.number}</p>
-      <p>City: ${form2Data.city}</p>
-      <p>Mobile: ${form2Data.telephone}</p>
-      <p>Email: ${form2Data.email}</p>
-      <p>IBAN: ${form2Data.iban}</p>
+      <h3>${userType.toUpperCase()}</h3>
+      <p><strong>Name:</strong> ${form2Data.name}</p>
+      <p><strong>Surname:</strong> ${form2Data.surname}</p>
+      <p><strong>Address:</strong> ${form2Data.address}</p>
+      <p><strong>Number:</strong> ${form2Data.number}</p>
+      <p><strong>City:</strong> ${form2Data.city}</p>
+      <p><strong>Mobile:</strong> ${form2Data.telephone}</p>
+      <p><strong>Email:</strong> ${form2Data.email}</p>
+      <p><strong>IBAN:</strong> ${form2Data.iban}</p>
       ${
         userType === "company"
-          ? `<p>Company Name: ${form2Data.companyName}</p>`
-          : `<p>Tax code: ${form2Data.taxCode}</p>`
+          ? `<p><strong>Company Name:</strong> ${form2Data.companyName}</p>`
+          : `<p><strong>Tax code: ${form2Data.taxCode}</p>`
       }
       ${
         userType === "company"
-          ? `<p>Invoice Code: ${form2Data.invoiceCode}</p>`
+          ? `<p><strong>Invoice Code:</strong> ${form2Data.invoiceCode}</p>`
           : ""
       }
       ${
         userType === "company"
-          ? `<p>VAT Number: ${form2Data.vatNumber}</p>`
+          ? `<p><strong>VAT Number:</strong> ${form2Data.vatNumber}</p>`
           : ""
       }
-      <p>IBAN: ${form2Data.iban}</p>
-      <p>Mobile/Contact Number 1: +${form2Data.mobile1}</p>
+      <p><strong>IBAN: ${form2Data.iban}</p>
+      <p><strong>Mobile/Contact Number 1:</strong> +${form2Data.mobile1}</p>
     </div>
 
     <hr class="divider" />
 
     <div class="form-group">
-      <h3>Form 3 Data</h3>
-      <p>Name: ${form3Data.form3_name}</p>
-      <p>Surname: ${form3Data.form3_surname}</p>
-      <p>Address: ${form3Data.form3_address}</p>
-      <p>Number: ${form3Data.form3_number}</p>
-      <p>City: ${form3Data.form3_city}</p>
-      <p>Mobile: +${form3Data.mobile}</p>
+      <h3> SERVICE INSTALLATION DETAILS</h3>
+      <p><strong>Name:</strong> ${form3Data.form3_name}</p>
+      <p><strong>Surname:</strong> ${form3Data.form3_surname}</p>
+      <p><strong>Address:</strong> ${form3Data.form3_address}</p>
+      <p><strong>Number:</strong> ${form3Data.form3_number}</p>
+      <p><strong>City:</strong> ${form3Data.form3_city}</p>
+      <p><strong>Mobile:</strong> +${form3Data.mobile}</p>
       ${
         form3Data.migrationCode === ""
           ? ""
-          : `<p>Migration Code: ${form3Data.migrationCode}</p>`
+          : `<strong><p>Migration Code: ${form3Data.migrationCode}</p>`
       }
     </div>
 
     <hr class="divider" />
     <div class="form-group">
-      <h3>Form 4 Data</h3>
+      <h3>ADDITIONAL SERVICES</h3>
       <h4>Modem Options:</h4>
       <p>${getSelectedOptions()}</p>
-      <p>IP: ${form4Data.ip ? "Yes (€6)" : "No"}</p>
-      <p>4G Backup: ${form4Data.backup ? "Yes (€200)" : "No"}</p>
+      <p><strong>IP:</strong> ${form4Data.ip ? "Yes (€6)" : "No"}</p>
+      <p><strong>4G Backup:</strong> ${
+        form4Data.backup ? "Yes (€200)" : "No"
+      }</p>
     </div>
     <hr class="divider" />
     <div class="form-group-btn">
-      <button onclick="modifyEntries()" class="button-86">Modify Entries</button>
-      <button onclick="submitForm5()" class="button-86">Submit</button>
+      <button onclick="loadForm1()" class="button-left"><span>Modify Entries </span></button>
+      <button onclick="submitForm5()" class="button button-green" style="vertical-align:middle"><span>Submit </span></button>
+      
     </div>
   `;
 
@@ -607,7 +649,7 @@ function getSelectedOptions() {
     selectedOptions.push(`${option}: ${modemOptions[option] ? "Yes" : "No"}`);
   }
 
-  return selectedOptions.join("<br>");
+  return selectedOptions.join("<br><br>");
 }
 
 function modifyEntries() {
@@ -765,11 +807,29 @@ function submitForm5() {
     form3Data,
     form4Data,
   };
-
-  // Log the combined JSON object to the console
-  console.log(JSON.stringify(allFormData, null, 2));
-  alert("Form 5 submitted successfully!");
-  window.location.reload();
+  
+  fetch("/action_page.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(allFormData),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log("Form 5 submitted successfully:", data);
+      alert("Form 5 submitted successfully!");
+      window.location.reload();
+    })
+    .catch((error) => {
+      console.error("There was a problem with the fetch operation:", error);
+      alert("Failed to submit the form. Please try again.");
+    });
 }
 
 function checkVATNumber(toCheck) {

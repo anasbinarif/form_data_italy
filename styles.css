@@ -11,17 +11,43 @@ body {
   box-sizing: border-box;
   background-color: cadetblue;
 }
+
+label {
+  display: block;
+  margin-bottom: 12px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  border: 1px solid rgb(118, 118, 118);
+  border-radius: 4px;
+  outline: none;
+  transition: all 0.3s;
+}
+
+input:hover {
+  filter: brightness(0.97);
+}
+
+::placeholder {
+  color: rgb(136, 128, 128);
+  font-size: 14px;
+}
+
 .center {
   text-align: center;
 }
 
 .form-container {
-  max-width: 600px;
+  max-width: 500px;
   margin: 50px auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 18px;
-  max-height: 700px;
+  max-height: 600px;
   overflow: auto;
   background-color: whitesmoke;
   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
@@ -30,6 +56,7 @@ body {
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   overflow-x: hidden;
 }
+
 @media screen and (max-width: 600px) {
   .form-container {
     max-width: 100%;
@@ -46,38 +73,34 @@ body {
   display: none; /* Set the width of the scrollbar */
 }
 
-/* .form-container::-webkit-scrollbar-thumb {
-  background-color: grey;
-  border-radius: 10px; 
-}
-
-.form-container::-webkit-scrollbar-track {
-  background-color: #f1f1f1; 
-} */
-
 .form-group {
+  flex-direction: column;
   margin-bottom: 15px;
   position: relative;
 }
-.form2-heading {
+
+.form-heading,
+.form2-heading h3 {
+  font-size: 22px;
+  margin: 12px 0 24px 0;
+  color: #a881af;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.form-group:last-of-type {
+  margin-bottom: 8px;
   display: flex;
   justify-content: center;
 }
 
-label {
-  display: block;
-  margin-bottom: 5px;
+.form2-heading {
+  display: flex;
+  justify-content: center;
+  color: #a881af;
+  text-transform: uppercase;
 }
 
-input {
-  width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
-  margin-bottom: 10px;
-}
-::placeholder {
-  color: red;
-}
 .container {
   display: flex;
   align-items: center;
@@ -106,31 +129,25 @@ select {
   border-radius: 4px;
   box-sizing: border-box;
   outline: none;
+  font-size: 16px;
 }
 
 select:focus {
   border-color: #161515; /* Set your desired border color on focus */
 }
 
-/* button {
-  padding: 10px 20px;
-  background-color: #4caf50;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #45a049;
-} */
-
 .form-group-btn {
   display: flex;
   gap: 15px;
 }
 
-.button {
+.form-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.button,
+.button-left {
   display: inline-block;
   border-radius: 4px;
   background-color: #a881af;
@@ -139,12 +156,23 @@ button:hover {
   text-align: center;
   font-size: 20px;
   padding: 10px 20px;
-  width: 100px;
+  width: 180px;
   transition: all 0.5s;
   cursor: pointer;
+  white-space: nowrap;
+}
+.button-left {
+  width: 200px;
+}
+.button-green {
+  background-color: #2c9f2c;
+}
+.button-left {
+  background-color: #a881af;
 }
 
-.button span {
+.button span,
+.button-left span {
   cursor: pointer;
   display: inline-block;
   position: relative;
@@ -159,14 +187,34 @@ button:hover {
   right: -20px;
   transition: 0.5s;
 }
+.button-left span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: -20px;
+  transition: 0.5s;
+  transform: rotate(180deg);
+}
 
 .button:hover span {
-  padding-right: 25px;
+  padding: 0px 25px 0px 0px;
+}
+.button-left:hover span {
+  padding: 0 0 0 25px;
 }
 
 .button:hover span:after {
   opacity: 1;
   right: 0;
+}
+.button-left:hover span:after {
+  opacity: 1;
+  left: 0;
+}
+
+.btn_submit {
+  background-color: #079f07;
 }
 
 /* Create a custom radio button */
@@ -213,7 +261,8 @@ button:hover {
 }
 .form-group-radios {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
 }
 
 .divider {
@@ -223,8 +272,9 @@ button:hover {
   border-top: 1px solid #ccc;
 }
 
-/* CSS */
-.button-86 {
+/* Radio Buttons + Checkbox Wrappers */
+
+/*.button-86 {
   all: unset;
   width: 100px;
   height: 30px;
@@ -289,7 +339,8 @@ button:hover {
 .button-86:active::after {
   transition: 0s;
   transform: translate(0, 5%);
-}
+}*/
+
 .checkbox-wrapper-27 .checkbox,
 .checkbox-wrapper-27 .radio {
   cursor: pointer;
@@ -416,7 +467,7 @@ button:hover {
 }
 .checkbox-wrapper-24 input[type="checkbox"]:checked + label span,
 .checkbox-wrapper-24 input[type="radio"]:checked + label span {
-  background-color: #333;
+  background-color: #9c62a6;
   transform: scale(1.25);
 }
 .checkbox-wrapper-24 input[type="checkbox"]:checked + label span:after,
@@ -433,7 +484,7 @@ button:hover {
 }
 .checkbox-wrapper-24 input[type="checkbox"]:checked + label:hover span,
 .checkbox-wrapper-24 input[type="radio"]:checked + label:hover span {
-  background-color: #333;
+  background-color: #a881af;
   transform: scale(1.25);
 }
 .checkbox-wrapper-24 input[type="checkbox"]:checked + label:hover span:after,
@@ -504,4 +555,9 @@ button:hover {
 
 .select select:disabled ~ .select__arrow {
   border-top-color: #cccccc;
+}
+.summaryTag {
+  color: red;
+  text-align: center;
+  margin: 0px;
 }
