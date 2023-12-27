@@ -807,7 +807,7 @@ function submitForm5() {
     form3Data,
     form4Data,
   };
-  
+
   fetch("/action_page.php", {
     method: "POST",
     headers: {
@@ -834,22 +834,18 @@ function submitForm5() {
 
 function checkVATNumber(toCheck) {
   var vatexp = new Array();
-
   var defCCode = "GB";
-
-  vatexp.push(/^(IT)(\d{11})$/); //** Italy
+  vatexp.push(/^(IT)?(\d{11})$/); // Modified regex to make country code optional
 
   var VATNumber = toCheck.toUpperCase();
-
   VATNumber = VATNumber.replace(/(\s|-|\.)+/g, "");
 
   var valid = false;
 
   for (var i = 0; i < vatexp.length; i++) {
     if (vatexp[i].test(VATNumber)) {
-      var cCode = RegExp.$1; // Isolate country code
+      var cCode = RegExp.$1 || "IT"; // Make "IT" the default country code if not provided
       var cNumber = RegExp.$2; // Isolate the number
-      if (cCode.length == 0) cCode = defCCode; // Set up default country code
 
       if (eval(cCode + "VATCheckDigit ('" + cNumber + "')")) valid = VATNumber;
       break;
