@@ -215,7 +215,7 @@ function loadForm2() {
     userType === "private" ? form2HTMLPrivate : form2HTMLCompany;
 
   formContainer.innerHTML = form2HTML;
-  }
+}
 
 function submitForm2() {
   const formElementIds = Object.keys(form2Data);
@@ -405,7 +405,7 @@ function loadForm3() {
   `;
 
   formContainer.innerHTML = form3HTML;
-  }
+}
 
 function toggleFormFields(option) {
   console.log("option", option);
@@ -527,7 +527,7 @@ function loadForm4() {
   `;
 
   formContainer.innerHTML = form4HTML;
-  }
+}
 
 function updateCost() {
   // Modem options
@@ -596,7 +596,6 @@ function loadForm5() {
           ? `<p><strong>VAT Number:</strong> ${form2Data.vatNumber}</p>`
           : ""
       }
-      <p><strong>IBAN: </strong>${form2Data.iban}</p>
       <p><strong>Mobile Number:</strong> +${form2Data.mobile1}</p>
     </div>
 
@@ -646,7 +645,7 @@ function loadForm5() {
   `;
 
   formContainer.innerHTML = form5HTML;
-  
+
   const authorizationCheckbox = document.getElementById(
     "authorizationCheckbox"
   );
