@@ -576,7 +576,7 @@ function loadForm5() {
       <p><strong>Name:</strong> ${form2Data.name}</p>
       <p><strong>Surname:</strong> ${form2Data.surname}</p>
       <p><strong>Address:</strong> ${form2Data.address}</p>
-      <p><strong>Number:</strong> ${form2Data.number}</p>
+      <p><strong>House Number:</strong> ${form2Data.number}</p>
       <p><strong>City:</strong> ${form2Data.city}</p>
       <p><strong>Mobile:</strong> ${form2Data.telephone}</p>
       <p><strong>Email:</strong> ${form2Data.email}</p>
