@@ -88,8 +88,8 @@ function loadForm1() {
           <div class="select__arrow"></div>
         </div>
       </div>
-      <div class="form-group">
-        <button onclick="submitForm1()" class="button" style="vertical-align:middle"><span>Next </span></button>
+      <div class="form-group form-btn">
+        <button onclick="submitForm1()" class="button"><span>Next </span></button>
       </div>
     `;
 
@@ -149,8 +149,8 @@ function loadForm2() {
       <label for="mobile1">Mobile</label>
       <input type="number" id="mobile1" name="mobile1" value="${form2Data.mobile1}" required>
     </div>
-    <div class="form-group">
-      <button onclick="submitForm2()" class="button" style="vertical-align:middle"><span>Next </span></button>
+    <div class="form-group form-btn">
+      <button onclick="submitForm2()" class="button"><span>Next </span></button>
     </div>
   `;
 
@@ -206,8 +206,8 @@ function loadForm2() {
       <label for="mobile1">Mobile Number</label>
       <input type="number" id="mobile1" name="mobile1" value="${form2Data.mobile1}" required>
     </div>
-    <div class="form-group">
-      <button onclick="submitForm2()" class="button" style="vertical-align:middle"><span>Next </span></button>
+    <div class="form-group form-btn">
+      <button onclick="submitForm2()" class="button"><span>Next </span></button>
     </div>
   `;
 
@@ -343,9 +343,7 @@ function loadForm3() {
     </div>  
     <div class="form-group-radios">
       <div class="checkbox-wrapper-24">
-        <input type="radio" id="radio-activation" ${
-          form3mode === "activation" ? "checked" : ""
-        } name="option" value="activation" onclick="toggleFormFields('activation')" />
+        <input type="radio" id="radio-activation" checked name="option" value="activation" onclick="toggleFormFields('activation')" />
         <label for="radio-activation" class="radio">
           <span><!-- This span is needed to create the "checkbox" element --></span>Activation
         </label>
@@ -360,37 +358,37 @@ function loadForm3() {
       </div>
     </div>
     <div class="form-group">
-      <label for="form3_name">Name2</label>
+      <label for="form3_name">Name</label>
       <input type="text" id="form3_name" name="form3_name" value="${
         form3Data.form3_name
       }" required>
     </div>
     <div class="form-group">
-      <label for="form3_surname">Surname2</label>
+      <label for="form3_surname">Surname</label>
       <input type="text" id="form3_surname" name="form3_surname" value="${
         form3Data.form3_surname
       }" required>
     </div>
     <div class="form-group">
-      <label for="form3_address">Address2</label>
+      <label for="form3_address">Address</label>
       <input type="text" id="form3_address" name="form3_address" value="${
         form3Data.form3_address
       }" required>
     </div>
     <div class="form-group">
-      <label for="form3_number">House Number2</label>
+      <label for="form3_number">House Number</label>
       <input type="text" id="form3_number" name="form3_number" value="${
         form3Data.form3_number
       }" required>
     </div>
     <div class="form-group">
-      <label for="form3_city">City2</label>
+      <label for="form3_city">City</label>
       <input type="text" id="form3_city" name="form3_city" value="${
         form3Data.form3_city
       }" required>
     </div>
     <div class="form-group">
-      <label for="mobile">Mobile2</label>
+      <label for="mobile">Mobile</label>
       <input type="number" id="mobile" name="mobile" value="${
         form3Data.mobile
       }" required>
@@ -401,8 +399,8 @@ function loadForm3() {
         form3Data.migrationCode
       }" disabled>
     </div>
-    <div class="form-group">
-      <button onclick="submitForm3()" class="button" style="vertical-align:middle"><span>Next </span></button>
+    <div class="form-group form-btn">
+      <button onclick="submitForm3()" class="button"><span>Next </span></button>
     </div>
   `;
 
@@ -469,7 +467,7 @@ function loadForm4() {
       <h3>ADDITIONAL SERVICES<h3/>
     </div>
     <div class="form-group">
-      <h3 for="modem">Modem:</h3>
+      <h3 class="services-heading" for="modem">Modem:</h3>
       <p for="modem">Please select an option</p>
       <div class="form4-items">
         <div class="checkbox-wrapper-27">
@@ -503,28 +501,28 @@ function loadForm4() {
     </div>
 
     <div class="checkbox-wrapper-27">
-      <h3 for="ip">IP:</h3>
+      <h3 class="services-heading" for="ip">IP:</h3>
       <label class="checkbox">
         <input type="checkbox" id="ip" name="ip" value="ip" onclick="updateCost()" ${
           form4Data.ip ? "checked" : ""
         }>
         <span class="checkbox__icon"></span>
-        €6
+        €6 (optional)
       </label>
     </div>
     <div class="checkbox-wrapper-27">
-      <h3 for="backup">4G Backup:</h3>
+      <h3 class="services-heading" for="backup">4G Backup:</h3>
       <label class="checkbox">
         <input type="checkbox" id="backup" name="backup" value="backup" onclick="updateCost()" ${
           form4Data.backup ? "checked" : ""
         }>
         <span class="checkbox__icon"></span>
-        €200
+        €200 (optional)
       </label>
     </div>
 
-    <div class="form-group">
-      <button onclick="submitForm4()" class="button" style="vertical-align:middle"><span>Next </span></button>
+    <div class="form-group form-btn">
+      <button onclick="submitForm4()" class="button"><span>Next </span></button>
     </div>
   `;
 
@@ -574,7 +572,7 @@ function loadForm5() {
     <div class="form-group">
       <p class="summaryTag">(Please verify your details before submitting)</p>
 
-      <h3>${userType.toUpperCase()}</h3>
+      <h3 class="form5-subHeading">${userType.toUpperCase()}</h3>
       <p><strong>Name:</strong> ${form2Data.name}</p>
       <p><strong>Surname:</strong> ${form2Data.surname}</p>
       <p><strong>Address:</strong> ${form2Data.address}</p>
@@ -586,7 +584,7 @@ function loadForm5() {
       ${
         userType === "company"
           ? `<p><strong>Company Name:</strong> ${form2Data.companyName}</p>`
-          : `<p><strong>Tax code: ${form2Data.taxCode}</p>`
+          : `<p><strong>Tax code:</strong> ${form2Data.taxCode}</p>`
       }
       ${
         userType === "company"
@@ -598,14 +596,14 @@ function loadForm5() {
           ? `<p><strong>VAT Number:</strong> ${form2Data.vatNumber}</p>`
           : ""
       }
-      <p><strong>IBAN: ${form2Data.iban}</p>
-      <p><strong>Mobile/Contact Number 1:</strong> +${form2Data.mobile1}</p>
+      <p><strong>IBAN: </strong>${form2Data.iban}</p>
+      <p><strong>Mobile Number:</strong> +${form2Data.mobile1}</p>
     </div>
 
     <hr class="divider" />
 
     <div class="form-group">
-      <h3> SERVICE INSTALLATION DETAILS</h3>
+      <h3 class="form5-subHeading">SERVICE INSTALLATION DETAILS</h3>
       <p><strong>Name:</strong> ${form3Data.form3_name}</p>
       <p><strong>Surname:</strong> ${form3Data.form3_surname}</p>
       <p><strong>Address:</strong> ${form3Data.form3_address}</p>
@@ -621,7 +619,7 @@ function loadForm5() {
 
     <hr class="divider" />
     <div class="form-group">
-      <h3>ADDITIONAL SERVICES</h3>
+      <h3 class="form5-subHeading">ADDITIONAL SERVICES</h3>
       <h4>Modem Options:</h4>
       <p>${getSelectedOptions()}</p>
       <p><strong>IP:</strong> ${form4Data.ip ? "Yes (€6)" : "No"}</p>
@@ -629,15 +627,38 @@ function loadForm5() {
         form4Data.backup ? "Yes (€200)" : "No"
       }</p>
     </div>
+    
+    <hr class="divider" />
+    <div class="form-group-checkbox">
+      <label class="checkbox">
+        <input type="checkbox" id="authorizationCheckbox" required>
+        <span class="checkbox__icon"></span>
+        I hereby authorize Aryel SRLS to charge the bimonthly billing on a continuous basis for the activated service.
+      </label>
+    </div>
     <hr class="divider" />
     <div class="form-group-btn">
       <button onclick="loadForm1()" class="button-left"><span>Modify Entries </span></button>
-      <button onclick="submitForm5()" class="button button-green" style="vertical-align:middle"><span>Submit </span></button>
-      
+      <button id="submitButton" onclick="submitForm5()" class="button button-green" style="vertical-align:middle" disabled>
+        <span>Submit </span>
+      </button>
     </div>
   `;
 
   formContainer.innerHTML = form5HTML;
+
+  const authorizationCheckbox = document.getElementById(
+    "authorizationCheckbox"
+  );
+  const submitButton = document.getElementById("submitButton");
+
+  if (authorizationCheckbox && submitButton) {
+    authorizationCheckbox.addEventListener("change", function () {
+      submitButton.disabled = !authorizationCheckbox.checked;
+    });
+  } else {
+    console.error("Checkbox or submit button not found");
+  }
 }
 
 function getSelectedOptions() {
